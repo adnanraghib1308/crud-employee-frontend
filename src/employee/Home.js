@@ -4,6 +4,7 @@ import '../App.css';
 import React, { useState } from "react";
 import { Content, Header } from 'antd/lib/layout/layout';
 import { Link } from 'react-router-dom';
+import Navbar from '../component/Navbar';
 
 const layout = {
   labelCol: { span: 4, },
@@ -25,16 +26,11 @@ function App() {
   };
   return (
     <Layout>
-      <Header >
-        <Menu theme="dark" mode="horizontal" >
-          <Menu.Item key="1" ><Link to='/'>Home</Link></Menu.Item>
-          <Menu.Item key="2"><Link to='/employee/list'>List</Link></Menu.Item>
-        </Menu>
-      </Header>
-      <Header style={{ marginBottom: "10px" }}>
-        {created && <Alert {...layout} message="Employee created Successfully" type="success" />}
-      </Header>
+      <Header style={{ marginBottom: "20px" }}>
+        <Navbar/>
+      </Header >
       <Content>
+        {created && <Alert {...layout} style={{ marginBottom: "20px" }} message="Employee created Successfully" type="success" />}
         <Form
           {...layout}
           name="basic"

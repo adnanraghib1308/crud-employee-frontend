@@ -3,6 +3,7 @@ import { getAllEmployee, deleteEmployee } from '../backend';
 import React, { useState, useEffect } from "react";
 import { Content, Header } from 'antd/lib/layout/layout';
 import { Link } from 'react-router-dom';
+import Navbar from '../component/Navbar';
 
 const List = () => {
   const [employee, setEmployee] = useState([]);
@@ -58,11 +59,8 @@ const List = () => {
   }
   return (
     <Layout>
-      <Header style={{ marginBottom: "10px" }}>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-          <Menu.Item key="1" ><Link to='/'>Home</Link></Menu.Item>
-          <Menu.Item key="2"><Link to='/employee/list'>List</Link></Menu.Item>
-        </Menu>
+      <Header style={{ marginBottom: "20px" }}>
+        <Navbar />
       </Header>
       <Content>
         <Table style={{ margin: "30px" }} columns={columns} dataSource={employee} />

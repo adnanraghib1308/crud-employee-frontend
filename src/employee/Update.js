@@ -1,10 +1,11 @@
 import { Form, Input, Button, Alert, Layout, Menu } from 'antd';
-import { updateEmployee } from '../backend';
+import { getEmployeeById, updateEmployee } from '../backend';
 import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
 import { Content, Header } from 'antd/lib/layout/layout';
 import { Link } from 'react-router-dom';
 import '../App.css';
+import Navbar from '../component/Navbar';
 
 const layout = {
   labelCol: { span: 4 },
@@ -27,16 +28,11 @@ const Update = () => {
   };
   return (
     <Layout>
-      <Header>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-          <Menu.Item key="1" ><Link to='/'>Home</Link></Menu.Item>
-          <Menu.Item key="2"><Link to='/employee/list'>List</Link></Menu.Item>
-        </Menu>
-      </Header>
-      <Header style={{ marginBottom: "10px" }}>
-        {created && <Alert style={{ marginTop: "10px" }} {...layout} message="Employee Updated Successfully" type="success" />}
+      <Header style={{ marginBottom: "20px" }}>
+        <Navbar />
       </Header>
       <Content>
+      {created && <Alert style={{ marginTop: "10px", marginBottom: "10px" }} {...layout} message="Employee Updated Successfully" type="success" />}
         <Form
           {...layout}
           name="basic"
