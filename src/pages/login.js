@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Form, Input, Button, Alert, Layout, Menu } from 'antd';
-import Navbar from '../component/Navbar';
+import Navbar from './component/Navbar';
 import { Content, Header } from 'antd/lib/layout/layout';
-import { signup } from '../authapicalls';
+import { signin, authenticate } from '../services/authapicalls';
 import { Redirect } from 'react-router-dom';
 
 const layout = {
@@ -14,27 +14,28 @@ const tailLayout = {
     wrapperCol: { offset: 4, span: 16 },
 };
 
-const Signup = () => {
+const Login = () => {
     const [error, setError] = useState("");
     const [redirect, setRedirect] = useState(false);
 
     const onFinish = (values: any) => {
-        signup(values)
-            .then(response => {
-                if (response.error) {
-                    setError(response.error);
-                }
-                else {
-                    setRedirect(true)
-                }
-            })
+        signin(values)
+        .then(response => {
+            if (response.error) {
+                setError(response.error)
+            }
+            else {
+                authenticate(response, () => {
+                    setRedirect(true);
+                });
+            }
+        })
     };
     return (
         <Layout>
             <Header style={{ marginBottom: "20px" }}>
                 <Navbar />
             </Header>
-
             <Content>
                 {error != "" && <Alert {...layout} style={{ marginBottom: "20px" }} message={error} type="error" />}
                 <Form
@@ -43,14 +44,6 @@ const Signup = () => {
                     initialValues={{ remember: true }}
                     onFinish={onFinish}
                 >
-                    <Form.Item
-                        label="Name"
-                        name="name"
-                        rules={[{ required: true, message: 'Name is required' }]}
-                    >
-                        <Input />
-                    </Form.Item>
-
                     <Form.Item
                         label="Email"
                         name="email"
@@ -67,7 +60,7 @@ const Signup = () => {
                     </Form.Item>
                     <Form.Item {...tailLayout}>
                         <Button type="primary" htmlType="submit">
-                            Sign up
+                            Log in
                         </Button>
                     </Form.Item>
                 </Form>
@@ -77,4 +70,4 @@ const Signup = () => {
     )
 }
 
-export default Signup;
+export default Login;

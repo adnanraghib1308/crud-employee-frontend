@@ -1,10 +1,10 @@
 import { Form, Input, Button, Alert, Layout, Menu } from 'antd';
-import { createEmployee } from '../backend';
+import { createEmployee } from '../services/backend';
 import '../App.css';
 import React, { useState } from "react";
 import { Content, Header } from 'antd/lib/layout/layout';
 import { Link } from 'react-router-dom';
-import Navbar from '../component/Navbar';
+import Navbar from './component/Navbar';
 
 const layout = {
   labelCol: { span: 4, },

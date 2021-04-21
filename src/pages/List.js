@@ -1,9 +1,9 @@
 import { Table, Button, Layout, Menu } from 'antd';
-import { getAllEmployee, deleteEmployee } from '../backend';
+import { getAllEmployee, deleteEmployee } from '../services/backend';
 import React, { useState, useEffect } from "react";
 import { Content, Header } from 'antd/lib/layout/layout';
 import { Link } from 'react-router-dom';
-import Navbar from '../component/Navbar';
+import Navbar from './component/Navbar';
 
 const List = () => {
   const [employee, setEmployee] = useState([]);

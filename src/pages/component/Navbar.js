@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, Redirect } from 'react-router-dom';
 import {Menu} from 'antd';
-import {isAutheticated, signout} from '../authapicalls';
+import {isAutheticated, signout} from '../../services/authapicalls';
 
 const Navbar = ({history}) => {
     return (

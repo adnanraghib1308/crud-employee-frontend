@@ -1,10 +1,10 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import List from './employee/List';
-import Update from './employee/Update';
-import App from './employee/Home.js';
-import Login from './auth/login';
-import Signup from './auth/Signup';
+import List from './pages/List';
+import Update from './pages/Update';
+import App from './pages/Home.js';
+import Login from './pages/login';
+import Signup from './pages/Signup';
 
 export default function Routes(){
     return (
